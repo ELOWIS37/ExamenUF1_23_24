@@ -18,14 +18,14 @@ class AlumneAdapter(private val alumne: List<Alumne>, private val onItemClick: (
         val nota: TextView = view.findViewById(R.id.textViewMark)
     }
 
-    // Crea una nueva vista (invocada por el layout manager)
+    // Crea una nova vista (invocada per el layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlumneViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_cardview, parent, false) // Usa tu CardView aquí
+            .inflate(R.layout.item_cardview, parent, false) // importem cardview
         return AlumneViewHolder(view)
     }
 
-    // Reemplaza el contenido de una vista (invocada por el layout manager)
+    // Canvia el contingut de una vista del cardview (invocada per el layout manager)
     override fun onBindViewHolder(holder: AlumneViewHolder, position: Int) {
         val alumne = alumne[position]
 
@@ -38,6 +38,6 @@ class AlumneAdapter(private val alumne: List<Alumne>, private val onItemClick: (
         holder.nota.text = alumne.mark.toString()
     }
 
-    // Devuelve el tamaño de tu conjunto de datos (invocada por el layout manager)
+    // Retorna el tamany del conjunt de dades (invocada per el layout manager)
     override fun getItemCount() = alumne.size
 }

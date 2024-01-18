@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.Navigation
 import com.example.examenuf1_23_24.R
 import com.example.examenuf1_23_24.databinding.FragmentAlumneBinding
 import com.example.examenuf1_23_24.viewmodel.AlumneViewModel
@@ -27,6 +26,7 @@ class AlumneFragment : Fragment() {
             R.layout.fragment_alumne, container, false
         )
 
+        //Inizialitzar viewModel
         alumneViewModel = ViewModelProvider(this).get(AlumneViewModel::class.java)
 
         binding.insertButton.setOnClickListener {
@@ -45,7 +45,7 @@ class AlumneFragment : Fragment() {
             alumneViewModel.newAlumn(requireContext(), nom, grup, nota.toInt())
             Toast.makeText(requireContext(), "Alumne afegit correctament", Toast.LENGTH_SHORT).show()
 
-            // Reiniciar el text del editText
+            // Reiniciar el text dels editTexts
             binding.nameEditText.setText("")
             binding.groupEditText.setText("")
             binding.markEditText.setText("")

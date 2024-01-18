@@ -11,12 +11,12 @@ class GrupViewModel : ViewModel() {
 
     private val _selectedItem = MutableLiveData<Alumne>()
 
-    //Seleccionar item de la base de dades (Toast)
+    //Seleccionar item de la base de dades (Toast mostrar per pantalla)
     fun setSelectedItem(item: Alumne) {
         _selectedItem.value = item
     }
 
-    //Select alumn
+    //Select * alumn
     fun obtenirAlumnes(context: Context) : LiveData<List<Alumne>>? {
         return Repositori.getAlumnes(context)
     }

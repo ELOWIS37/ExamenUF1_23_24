@@ -9,12 +9,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.examenuf1_23_24.R
 import com.example.examenuf1_23_24.adapter.AlumneAdapter
-import com.example.examenuf1_23_24.databinding.FragmentAlumneBinding
 import com.example.examenuf1_23_24.databinding.FragmentGrupBinding
 import com.example.examenuf1_23_24.viewmodel.GrupViewModel
 
@@ -35,8 +33,10 @@ class GrupFragment : Fragment() {
             R.layout.fragment_grup, container, false
         )
 
+        //Inizialitzar viewModel
         grupViewModel = ViewModelProvider(this).get(GrupViewModel::class.java)
 
+        // RecyclerView (layout manager)
         viewManager = LinearLayoutManager(context)
 
         recyclerView = binding.recyclerView.apply {
@@ -44,8 +44,10 @@ class GrupFragment : Fragment() {
             layoutManager = viewManager
         }
 
+        // Inicialitzem la funció per tal de que surtin totes les dades al principi
         selectAlumnesToRecyclerView()
 
+        // Crida la funció selectAlumnesToRecyclerView al fer clic a algun dels 2 switchs
         binding.switchAprovats.setOnClickListener{ selectAlumnesToRecyclerView() }
         binding.switchSuspesos.setOnClickListener{ selectAlumnesToRecyclerView() }
 
@@ -57,7 +59,8 @@ class GrupFragment : Fragment() {
         val aprovats = binding.switchAprovats.isChecked
         val suspesos = binding.switchSuspesos.isChecked
 
-        if (aprovats && suspesos){
+        // Condició per verificar si el switch de 'aprovat' o 'suspesos' està activat
+        if (aprovats && suspesos){ // Si tant el switch 'aprovats' o el 'suspesos' estan activats
             grupViewModel.obtenirAlumnes(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
                 alumnesLlista?.let {
                     viewAdapter = AlumneAdapter(it) { item ->
@@ -68,7 +71,7 @@ class GrupFragment : Fragment() {
                 }
             })
         }
-        else if (aprovats){
+        else if (aprovats){ // Si nomès el switch 'aprovat' esta activat
             grupViewModel.obtenirAlumnesAprovats(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
                 alumnesLlista?.let {
                     viewAdapter = AlumneAdapter(it) { item ->
@@ -79,7 +82,7 @@ class GrupFragment : Fragment() {
                 }
             })
         }
-        else if (suspesos) {
+        else if (suspesos) { // Si nomès el switch 'suspesos' esta activat
             grupViewModel.obtenirAlumnesSuspesos(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
                 alumnesLlista?.let {
                     viewAdapter = AlumneAdapter(it) { item ->
@@ -89,9 +92,8 @@ class GrupFragment : Fragment() {
                     recyclerView.adapter = viewAdapter
                 }
             })
-        } else {
-
-            Toast.makeText(requireContext(), "Has de seleccionar APROVATS O SUSPESOS", Toast.LENGTH_SHORT).show()
+        } else { // Si cap dels switchs esta activat surt un missatge
+            Toast.makeText(requireContext(), "Selecciona APROVAT O SUSPESOS", Toast.LENGTH_SHORT).show()
         }
     }
 }
