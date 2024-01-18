@@ -11,16 +11,53 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
-            android:layout_width="281dp"
-            android:layout_height="359dp"
+            android:layout_width="275dp"
+            android:layout_height="0dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="1dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="141dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchSuspesos"
+            app:layout_constraintVertical_bias="0.498" />
+
+        <Switch
+            android:id="@+id/switchAprovats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginBottom="4dp"
+            android:checked="true"
+            android:text="Aprovats"
+            app:layout_constraintBottom_toTopOf="@+id/refreshButton"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView"
+            tools:ignore="UseSwitchCompatOrMaterialXml,VisualLintButtonSize" />
+
+        <Switch
+            android:id="@+id/switchSuspesos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginBottom="48dp"
+            android:checked="true"
+            android:text="Suspesos"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.325" />
+            tools:ignore="UseSwitchCompatOrMaterialXml,VisualLintButtonSize" />
+
+        <Button
+            android:id="@+id/refreshButton"
+            android:layout_width="99dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="101dp"
+            android:text="Refresh"
+            app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+            app:layout_constraintStart_toStartOf="@+id/recyclerView"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

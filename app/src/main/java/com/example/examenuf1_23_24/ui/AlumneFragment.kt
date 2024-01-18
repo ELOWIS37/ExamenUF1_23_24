@@ -35,7 +35,7 @@ class AlumneFragment : Fragment() {
             val grup = binding.groupEditText.text.toString()
             val nota = binding.markEditText.text.toString().trim()
 
-            // Condició per que no peti l'aplicaió si els valor son nulls
+            // Condició per que no peti l'aplicaió si els valors son nulls
             if (nom.isEmpty() || grup.isEmpty() || nota.isEmpty()) {
                 Toast.makeText(requireContext(), "Sisplau, completi tots els camps", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener

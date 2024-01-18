@@ -14,4 +14,10 @@ interface AlumneDao {
 
     @Query("SELECT * FROM Alumn")
     fun getAlumnes(): LiveData<List<Alumne>>
+
+    @Query("SELECT * FROM Alumn WHERE mark >= 5")
+    fun getAlumnesAprovats(): LiveData<List<Alumne>>
+
+    @Query("SELECT * FROM Alumn WHERE mark < 5")
+    fun getAlumnesSuspesos(): LiveData<List<Alumne>>
 }

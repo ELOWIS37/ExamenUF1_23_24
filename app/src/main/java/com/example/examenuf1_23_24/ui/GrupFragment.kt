@@ -38,21 +38,60 @@ class GrupFragment : Fragment() {
         grupViewModel = ViewModelProvider(this).get(GrupViewModel::class.java)
 
         viewManager = LinearLayoutManager(context)
+
         recyclerView = binding.recyclerView.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
         }
 
-        grupViewModel.obtenirAlumnes(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
-            alumnesLlista?.let {
-                viewAdapter = AlumneAdapter(it) { item ->
-                    grupViewModel.setSelectedItem(item)
-                    Toast.makeText(requireContext(), "$item", Toast.LENGTH_SHORT).show()
-                }
-                recyclerView.adapter = viewAdapter
-            }
-        })
+        selectAlumnesToRecyclerView()
+
+        binding.switchAprovats.setOnClickListener{ selectAlumnesToRecyclerView() }
+        binding.switchSuspesos.setOnClickListener{ selectAlumnesToRecyclerView() }
 
         return binding.root
+    }
+
+    fun selectAlumnesToRecyclerView(){
+
+        val aprovats = binding.switchAprovats.isChecked
+        val suspesos = binding.switchSuspesos.isChecked
+
+        if (aprovats && suspesos){
+            grupViewModel.obtenirAlumnes(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
+                alumnesLlista?.let {
+                    viewAdapter = AlumneAdapter(it) { item ->
+                        grupViewModel.setSelectedItem(item)
+                        Toast.makeText(requireContext(), "$item", Toast.LENGTH_SHORT).show()
+                    }
+                    recyclerView.adapter = viewAdapter
+                }
+            })
+        }
+        else if (aprovats){
+            grupViewModel.obtenirAlumnesAprovats(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
+                alumnesLlista?.let {
+                    viewAdapter = AlumneAdapter(it) { item ->
+                        grupViewModel.setSelectedItem(item)
+                        Toast.makeText(requireContext(), "$item", Toast.LENGTH_SHORT).show()
+                    }
+                    recyclerView.adapter = viewAdapter
+                }
+            })
+        }
+        else if (suspesos) {
+            grupViewModel.obtenirAlumnesSuspesos(requireContext())?.observe(viewLifecycleOwner, Observer { alumnesLlista ->
+                alumnesLlista?.let {
+                    viewAdapter = AlumneAdapter(it) { item ->
+                        grupViewModel.setSelectedItem(item)
+                        Toast.makeText(requireContext(), "$item", Toast.LENGTH_SHORT).show()
+                    }
+                    recyclerView.adapter = viewAdapter
+                }
+            })
+        } else {
+
+            Toast.makeText(requireContext(), "Has de seleccionar APROVATS O SUSPESOS", Toast.LENGTH_SHORT).show()
+        }
     }
 }

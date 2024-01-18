@@ -38,5 +38,25 @@ class Repositori {
 
             return alumne
         }
+
+        //SELECT alumnes aprovats
+        fun getAlumnesAprovats(context: Context): LiveData<List<Alumne>>? {
+
+            alumnesDatabase = initializeDB(context)
+
+            alumne = alumnesDatabase!!.alumneDao().getAlumnesAprovats()
+
+            return alumne
+        }
+
+        //SELECT alumnes suspesos
+        fun getAlumnesSuspesos(context: Context): LiveData<List<Alumne>>? {
+
+            alumnesDatabase = initializeDB(context)
+
+            alumne = alumnesDatabase!!.alumneDao().getAlumnesSuspesos()
+
+            return alumne
+        }
     }
 }
