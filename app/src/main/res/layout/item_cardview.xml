@@ -23,7 +23,7 @@
                     android:id="@+id/textViewName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="8dp"
                     android:text="Nom"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -36,20 +36,20 @@
                     android:id="@+id/textViewGroup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="124dp"
+                    android:layout_marginStart="76dp"
                     android:text="Grup"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textViewName"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/textViewMark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="256dp"
+                    android:layout_marginStart="172dp"
                     android:text="Nota"
                     android:textSize="16sp"
                     android:textStyle="bold"

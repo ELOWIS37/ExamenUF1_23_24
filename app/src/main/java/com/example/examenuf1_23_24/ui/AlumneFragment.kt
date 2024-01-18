@@ -41,7 +41,7 @@ class AlumneFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            // Pasem els valor de la funció al viewModel
+            // Pasem els valors de la funció al viewModel
             alumneViewModel.newAlumn(requireContext(), nom, grup, nota.toInt())
             Toast.makeText(requireContext(), "Alumne afegit correctament", Toast.LENGTH_SHORT).show()
 

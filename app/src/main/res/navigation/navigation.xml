@@ -10,4 +10,8 @@
         android:name="com.example.examenuf1_23_24.ui.AlumneFragment"
         android:label="fragment_alumne"
         tools:layout="@layout/fragment_alumne" />
+    <fragment
+        android:id="@+id/grupFragment"
+        android:name="com.example.examenuf1_23_24.ui.GrupFragment"
+        android:label="GrupFragment" />
 </navigation>
