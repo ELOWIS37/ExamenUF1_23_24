@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Examen UF1_23_24</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="addButton">+</string>
+    <string name="nota">nota</string>
+    <string name="grup">grup</string>
+    <string name="nom">nom</string>
+</resources>
